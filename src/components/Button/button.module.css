@@ -17,6 +17,9 @@
   color: var(--light-grey);
 }
 
+.btn:disabled {
+  background-color: var(--grey);
+}
 .btn:active {
   background-color: var(--accent-blue);
   color: var(--light-grey);

@@ -3,10 +3,9 @@ import { nanoid } from 'nanoid/non-secure';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 
-import contactFormSchema from 'src/yup/contactFormSchema';
-
 import css from './contactForm.module.css';
-import { addContact } from 'src/redux/contactsOps';
+import { addContact } from 'src/redux/contacts/operations';
+import { validationSchema } from 'src/utils/yup/validationSchema';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -28,7 +27,7 @@ const ContactForm = () => {
   const phoneId = useId();
   return (
     <Formik
-      validationSchema={contactFormSchema}
+      validationSchema={validationSchema.contacts}
       initialValues={values}
       onSubmit={handleSubmit}
     >

@@ -4,7 +4,4 @@ export const initialState = {
     isLoading: null,
     isError: null,
   },
-  filters: {
-    name: '',
-  },
 };

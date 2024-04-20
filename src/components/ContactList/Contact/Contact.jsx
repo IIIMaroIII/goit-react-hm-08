@@ -2,8 +2,8 @@ import css from './contact.module.css';
 import { IoIosContact } from 'react-icons/io';
 import { FaPhoneAlt } from 'react-icons/fa';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'src/redux/contactsOps';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'src/redux/contacts/operations';
 
 const Contact = ({ data }) => {
   const dispatch = useDispatch();

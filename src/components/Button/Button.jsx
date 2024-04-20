@@ -4,15 +4,21 @@ import clsx from 'clsx';
 
 const Button = ({
   children,
+  addClass = '',
   selected = false,
-  type = 'button',
+  disabled = false,
   ...otherProps
 }) => {
   return (
     <button
-      className={clsx(css.btn, {
-        [css.isSelected]: selected,
-      })}
+      className={clsx(
+        css.btn,
+        {
+          [css.isSelected]: selected,
+        },
+        addClass,
+      )}
+      disabled={disabled}
       {...otherProps}
     >
       {children}
