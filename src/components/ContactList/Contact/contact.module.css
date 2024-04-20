@@ -1,0 +1,32 @@
+.contact {
+  border: 1px solid var(--dark-grey);
+  padding: 8px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  justify-content: space-between;
+  flex-basis: calc((100% - 3 * 48px) / 4);
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.name {
+}
+.phone {
+}
+.btn {
+}
+.logo {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  fill: inherit;
+  stroke: inherit;
+  font-size: inherit;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
