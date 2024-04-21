@@ -6,9 +6,9 @@ import SearchBox from 'src/components/SearchBox/SearchBox';
 const ContactsPage = () => {
   return (
     <div>
-      <ContactForm />
+      {/* <ContactForm />
       <SearchBox />
-      <ContactList />
+      <ContactList /> */}
     </div>
   );
 };

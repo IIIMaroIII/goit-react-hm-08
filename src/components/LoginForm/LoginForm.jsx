@@ -3,6 +3,7 @@ import css from './loginForm.module.css';
 import { validationSchema } from 'src/utils/yup/validationSchema';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
+import { login } from 'src/redux/auth/operations';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const LoginForm = () => {
     password: '',
   };
   const handleSubmit = (values, { resetForm }) => {
+    dispatch(login(values));
     resetForm();
   };
 

@@ -22,7 +22,7 @@ export const contactsSlice = createSlice({
         state.isLoading = false;
         state.isError = payload;
       });
-    // // Add Contact
+
     // .addCase(addContact.pending, (state, { payload }) => {
     //   state.isLoading = true;
     //   state.isError = null;
@@ -35,7 +35,7 @@ export const contactsSlice = createSlice({
     // .addCase(addContact.rejected, (state, { payload }) => {
     //   state.isError = payload;
     // })
-    // // Delete Contact
+
     // .addCase(deleteContact.pending, (state, { payload }) => {
     //   state.isLoading = true;
     //   state.isError = null;
