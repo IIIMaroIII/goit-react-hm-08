@@ -9,11 +9,12 @@ import App from './App.jsx';
 import 'reset-css/reset.css';
 import './index.css';
 import 'modern-normalize/modern-normalize.css';
+import Loader from './components/Loader/Loader.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate persistor={persistor}>
+      <PersistGate loading={<Loader />} persistor={persistor}>
         <BrowserRouter>
           <App />
         </BrowserRouter>

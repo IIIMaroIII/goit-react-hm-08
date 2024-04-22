@@ -7,27 +7,27 @@ import { getContactsList } from 'src/redux/contacts/operations';
 import Loader from '../Loader/Loader';
 import { selectContacts, selectLoading } from 'src/redux/contacts/selectors';
 import { selectFilteredContacts } from 'src/redux/filters/selectors';
+import { selectUserIsLoggedIn } from 'src/redux/auth/selectors';
 
 const ContactList = () => {
-  const items = useSelector(selectContacts);
+  const dispatch = useDispatch();
+  const isUserLoggedIn = useSelector(selectUserIsLoggedIn);
   const isLoading = useSelector(selectLoading);
   const filteredContacts = useSelector(selectFilteredContacts);
-  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getContactsList());
   }, [dispatch]);
 
   const isFilteredContactsEmpty = filteredContacts.length === 0;
-  const isContactsEmpty = items.length === 0;
 
   return (
     <>
       {isLoading && <Loader />}
-      {!isContactsEmpty && (
-        <ul className={css.list}>
-          {!isFilteredContactsEmpty && <Contact data={filteredContacts} />}
-        </ul>
-      )}
+
+      <ul className={css.list}>
+        {!isFilteredContactsEmpty && <Contact data={filteredContacts} />}
+      </ul>
     </>
   );
 };

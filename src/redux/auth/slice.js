@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import { login, logout, register } from './operations';
+import { login, logout, refreshCurrentUser, register } from './operations';
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -17,10 +17,11 @@ export const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = null;
         state.error = null;
-        console.log('Register has been success🎊');
+        console.log('Register has been successful🎊');
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isLoading = false;
       })
       .addCase(login.pending, state => {
         state.isLoading = true;
@@ -30,33 +31,46 @@ export const authSlice = createSlice({
         state.user = payload.user;
         state.token = payload.token;
         state.isLoggedIn = true;
-        state.isLoading = null;
+        state.isLoading = false;
         state.error = null;
-        console.log('login has been success🎊');
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isLoading = false;
       })
       .addCase(logout.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(logout.fulfilled, state => {
+        state.user = initialState.user;
         state.isLoggedIn = false;
-        state.isLoading = null;
+        state.isLoading = false;
         state.error = null;
-        console.log('logout has been success🎊');
+        state.token = null;
+        console.log('logout has been successful🎊');
       })
       .addCase(logout.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isLoading = false;
+      })
+      .addCase(refreshCurrentUser.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(refreshCurrentUser.fulfilled, (state, { payload }) => {
+        console.log(payload);
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.isLoading = false;
+        state.error = null;
+        console.log('refreshCurrentUser has been successful🎊');
+      })
+      .addCase(refreshCurrentUser.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.isLoading = false;
       });
   },
 });
 
 export const authReducer = authSlice.reducer;
-
-/**
- * name:
- *
- *
- */

@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import css from './layout.module.css';
 import AppBar from '../AppBar/AppBar';
+import Loader from '../Loader/Loader';
 
 const Layout = ({ children }) => {
   return (
     <>
       <AppBar />
-      <div className={css.wrapper}>{children}</div>
+      <Suspense fallback={<Loader />}>{children}</Suspense>
     </>
   );
 };

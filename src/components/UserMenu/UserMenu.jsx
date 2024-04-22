@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
 import css from './userMenu.module.css';
 import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser, selectUserIsLoggedIn } from 'src/redux/auth/selectors';
+import { selectUser } from 'src/redux/auth/selectors';
 import { logout } from 'src/redux/auth/operations';
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector(selectUser);
-  const isUserLoggedIn = useSelector(selectUserIsLoggedIn);
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .then(() => {
+        navigate('/');
+        console.log('You`ve been successfully logged out');
+      })
+      .catch(err => console.log(err));
   };
 
   return (
@@ -20,13 +24,8 @@ const UserMenu = () => {
       <div className={css.userWrapper}>
         <p className={css.userText}>Welcome, {user.name}!🫵🏻</p>
       </div>
-      {isUserLoggedIn ? (
-        <Button onClick={handleLogout}>Log out</Button>
-      ) : (
-        <NavLink className={css.login} to="/login">
-          Log in
-        </NavLink>
-      )}
+
+      <Button onClick={handleLogout}>Log out</Button>
     </div>
   );
 };
