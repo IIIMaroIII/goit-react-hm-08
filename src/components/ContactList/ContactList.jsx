@@ -5,7 +5,7 @@ import Contact from './Contact/Contact';
 import { useEffect } from 'react';
 import { getContactsList } from 'src/redux/contacts/operations';
 import Loader from '../Loader/Loader';
-import { selectContacts, selectLoading } from 'src/redux/contacts/selectors';
+import { selectLoading } from 'src/redux/contacts/selectors';
 import { selectFilteredContacts } from 'src/redux/filters/selectors';
 import { selectUserIsLoggedIn } from 'src/redux/auth/selectors';
 

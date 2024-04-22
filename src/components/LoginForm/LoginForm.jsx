@@ -4,10 +4,15 @@ import { validationSchema } from 'src/utils/yup/validationSchema';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { login } from 'src/redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const fromPage = location.state || '/';
+  console.log('location', location);
+  console.log('fromPage', fromPage);
+
   const navigate = useNavigate();
   const initialValues = {
     email: '',
@@ -17,7 +22,7 @@ const LoginForm = () => {
     dispatch(login(values))
       .then(() => {
         resetForm();
-        navigate('/contacts');
+        navigate(fromPage);
         console.log('You`ve been successfully logged in');
       })
       .catch(err => console.log(err));

@@ -13,7 +13,7 @@ const UserMenu = () => {
   const handleLogout = () => {
     dispatch(logout())
       .then(() => {
-        navigate('/');
+        navigate('/', { replace: true });
         console.log('You`ve been successfully logged out');
       })
       .catch(err => console.log(err));
