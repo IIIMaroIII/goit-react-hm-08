@@ -1,5 +1,11 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from './components/Layout/Layout';
@@ -16,13 +22,18 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { selectUserToken } from './redux/auth/selectors';
 
 function App() {
-  const isToken = useSelector(selectUserToken);
-  const navigate = useNavigate();
+  /* -------------------------------------------------------------------------- */
+  /*При refreshCurrentUser, когда находишся на /contacts залогиненным, все равно перекидывает на /login                          */
+  /* -------------------------------------------------------------------------- */
+
+  // const isToken = useSelector(selectUserToken);
+  // const location = useLocation();
+  // console.log('location from APP.jsx', location);
+  // const fromPage = location.state || '/';
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(refreshCurrentUser())
-      .then(() => navigate('/contacts'))
-      .catch(err => console.log(err));
+    dispatch(refreshCurrentUser());
   }, [dispatch]);
 
   return (

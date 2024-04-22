@@ -4,9 +4,11 @@ import { validationSchema } from 'src/utils/yup/validationSchema';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { register } from 'src/redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const initialValues = {
     name: '',
     email: '',
@@ -15,8 +17,13 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
-    dispatch(register(values));
-    resetForm();
+    dispatch(register(values))
+      .then(() => {
+        resetForm();
+        navigate('/login');
+        console.log('You`ve been successfully logged in');
+      })
+      .catch(err => console.log(err));
   };
 
   return (
