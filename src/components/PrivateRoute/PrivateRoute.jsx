@@ -39,14 +39,21 @@ import { selectUserIsLoggedIn } from 'src/redux/auth/selectors';
 /* -------------------------------------------------------------------------- */
 /*            Вот так только работает. Скажите это вариант можно применять?
 /* -------------------------------------------------------------------------- */
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children, redirectTo }) => {
   const isUserLoggedIn = useSelector(selectUserIsLoggedIn);
   const location = useLocation();
+  const fromPage = location.state || '/';
   console.log('location', location);
   console.log(isUserLoggedIn);
 
   return (
-    <>{isUserLoggedIn ? children : <Navigate to="/login" state={location} />}</>
+    <>
+      {isUserLoggedIn ? (
+        children
+      ) : (
+        <Navigate to={redirectTo} state={fromPage} />
+      )}
+    </>
   );
 };
 

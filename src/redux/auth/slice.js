@@ -55,20 +55,18 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(refreshCurrentUser.pending, state => {
-        state.isLoading = true;
+        state.isRefreshing = true;
         state.error = null;
       })
       .addCase(refreshCurrentUser.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.user = payload;
         state.isLoggedIn = true;
-        state.isLoading = false;
+        state.isRefreshing = false;
         state.error = null;
-        console.log('refreshCurrentUser has been successful🎊');
       })
       .addCase(refreshCurrentUser.rejected, (state, { payload }) => {
         state.error = payload;
-        state.isLoading = false;
+        state.isRefreshing = false;
       });
   },
 });

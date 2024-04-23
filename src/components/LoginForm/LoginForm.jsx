@@ -9,23 +9,18 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const fromPage = location.state || '/';
-  console.log('location', location);
-  console.log('fromPage', fromPage);
-
+  const fromPage = location.pathname || '/';
   const navigate = useNavigate();
+
   const initialValues = {
     email: '',
     password: '',
   };
+
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(login(values))
-      .then(() => {
-        resetForm();
-        navigate(fromPage);
-        console.log('You`ve been successfully logged in');
-      })
-      .catch(err => console.log(err));
+    dispatch(login(values));
+    resetForm();
+    navigate(fromPage);
   };
 
   return (
