@@ -23,6 +23,9 @@
 .btn:disabled {
   background-color: var(--grey);
 }
+.btn:disabled.btn:hover {
+  color: var(--black);
+}
 /* .btn:active {
   background-color: var(--accent-blue);
   color: var(--light-grey);
