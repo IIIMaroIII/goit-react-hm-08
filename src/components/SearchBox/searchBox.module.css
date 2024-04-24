@@ -8,4 +8,5 @@
 .input {
   width: 100%;
   box-shadow: var(--shadow);
+  background-color: var(--semi-transparent);
 }

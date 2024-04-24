@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import * as yup from 'yup';
 
 const contacts = yup.object().shape({

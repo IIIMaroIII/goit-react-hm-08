@@ -12,6 +12,7 @@
   padding: 16px;
   margin: 0 auto 16px;
   box-shadow: var(--shadow);
+  background-color: var(--semi-transparent);
 }
 .wrapper {
 }
@@ -26,8 +27,10 @@
 }
 .error {
   display: block;
+
   margin-top: 8px;
-  color: red;
+  color: rgba(159, 17, 17, 0.895);
+  font-weight: bold;
 }
 .button {
   width: fit-content;

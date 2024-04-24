@@ -9,6 +9,7 @@
   justify-content: space-between;
   /* flex-basis: calc((100% - 3 * 48px) / 4); */
   box-shadow: var(--shadow);
+  background-color: var(--semi-transparent);
 }
 /* .wrapper {
   display: flex;
