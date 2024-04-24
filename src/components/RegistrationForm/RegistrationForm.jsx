@@ -4,11 +4,11 @@ import { validationSchema } from 'src/utils/yup/validationSchema';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { register } from 'src/redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const initialValues = {
     name: '',
     email: '',
@@ -16,14 +16,16 @@ const RegistrationForm = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(register(values))
+      .unwrap()
       .then(() => {
-        resetForm();
-        navigate('/login');
-        console.log('You`ve been successfully logged in');
+        toast.success(`User ${values.name} has been created 🎊 `);
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        toast.error('User already exist 😬');
+      });
+    resetForm();
   };
 
   return (

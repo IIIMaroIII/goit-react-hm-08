@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { handleToken } from 'src/utils/axios/handleToken';
 
 export const register = createAsyncThunk(
@@ -27,6 +28,9 @@ export const login = createAsyncThunk(
         return rejectWithValue(res.statusText);
       }
       handleToken.set(res.data.token);
+      // console.log('res.data', res.data);
+      // console.log('credentials', credentials);
+      toast.success(`Welcome back ${res.data.user.name}`);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);

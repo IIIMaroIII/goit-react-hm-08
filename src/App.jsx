@@ -1,13 +1,10 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from './components/Layout/Layout';
 import Main from './components/Main/Main';
 import { refreshCurrentUser } from './redux/auth/operations';
-import { selectRefreshing } from './redux/auth/selectors';
-import Loader from './components/Loader/Loader';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const LoginPage = lazy(() => import('./pages/LoginPage'));
@@ -15,19 +12,20 @@ const ContactsPage = lazy(() => import('./pages/ContactsPage'));
 const RegistrationPage = lazy(() => import('./pages/RegistrationPage'));
 
 import './App.css';
+import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute';
+import { selectRefreshing } from './redux/auth/selectors';
+import toast from 'react-hot-toast';
 
 function App() {
-  const location = useLocation();
-  const fromPage = location.state && '/';
-  const isRefreshing = useSelector(selectRefreshing);
-  const navigate = useNavigate();
+  const isUserRefreshing = useSelector(selectRefreshing);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshCurrentUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Loader />
+  return isUserRefreshing ? (
+    <b>Refreshing...</b>
   ) : (
     <>
       <Layout>
@@ -42,8 +40,22 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/register" element={<RegistrationPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute redirectTo="/contacts">
+                  <RegistrationPage />
+                </RestrictedRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute redirectTo="/contacts">
+                  <LoginPage />
+                </RestrictedRoute>
+              }
+            />
           </Routes>
         </Main>
       </Layout>
@@ -52,3 +64,5 @@ function App() {
 }
 
 export default App;
+
+// Request failed with status code 400 - user exist

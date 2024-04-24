@@ -48,7 +48,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.token = null;
-        console.log('logout has been successful🎊');
       })
       .addCase(logout.rejected, (state, { payload }) => {
         state.error = payload;

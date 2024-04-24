@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { clearState } from './slice';
+import toast from 'react-hot-toast';
+import CustomToast from 'src/utils/CustomToast';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -9,6 +10,7 @@ export const getContactsList = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await axios.get('/contacts');
+
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }

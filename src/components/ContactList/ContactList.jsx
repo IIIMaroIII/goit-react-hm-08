@@ -7,16 +7,17 @@ import { getContactsList } from 'src/redux/contacts/operations';
 import Loader from '../Loader/Loader';
 import { selectLoading } from 'src/redux/contacts/selectors';
 import { selectFilteredContacts } from 'src/redux/filters/selectors';
-import { selectUserIsLoggedIn } from 'src/redux/auth/selectors';
+import toast from 'react-hot-toast';
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const isUserLoggedIn = useSelector(selectUserIsLoggedIn);
+
   const isLoading = useSelector(selectLoading);
   const filteredContacts = useSelector(selectFilteredContacts);
 
   useEffect(() => {
     dispatch(getContactsList());
+    toast('At this page you can modify your contact list');
   }, [dispatch]);
 
   const isFilteredContactsEmpty = filteredContacts.length === 0;

@@ -2,15 +2,14 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import css from './loginForm.module.css';
 import { validationSchema } from 'src/utils/yup/validationSchema';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'src/redux/auth/operations';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { selectUser } from 'src/redux/auth/selectors';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
-  const fromPage = location.pathname || '/';
-  const navigate = useNavigate();
+  const currentUser = useSelector(selectUser);
 
   const initialValues = {
     email: '',
@@ -18,9 +17,13 @@ const LoginForm = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(login(values));
+    dispatch(login(values))
+      .unwrap()
+      .catch(err => {
+        console.log(err);
+        toast.error('Oops, check your email and password and try again 😬');
+      });
     resetForm();
-    navigate(fromPage);
   };
 
   return (
