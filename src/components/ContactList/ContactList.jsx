@@ -5,19 +5,19 @@ import Contact from './Contact/Contact';
 import { useEffect } from 'react';
 import { getContactsList } from 'src/redux/contacts/operations';
 import Loader from '../Loader/Loader';
-import { selectLoading } from 'src/redux/contacts/selectors';
+import { selectLoadingContacts } from 'src/redux/contacts/selectors';
 import { selectFilteredContacts } from 'src/redux/filters/selectors';
 import toast from 'react-hot-toast';
 
 const ContactList = () => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector(selectLoading);
+  const isLoading = useSelector(selectLoadingContacts);
   const filteredContacts = useSelector(selectFilteredContacts);
 
   useEffect(() => {
     dispatch(getContactsList());
-    toast('At this page you can modify your contact list');
+    toast('At this page you can modify your contact list', { duration: 10000 });
   }, [dispatch]);
 
   const isFilteredContactsEmpty = filteredContacts.length === 0;

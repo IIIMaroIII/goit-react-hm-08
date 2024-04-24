@@ -39,7 +39,7 @@ const RegistrationForm = () => {
           <div className={css.wrapper}>
             <label className={css.label}>
               Name:
-              <Field type="text" name="name" />
+              <Field className={css.input} type="text" name="name" />
               <ErrorMessage
                 className={css.error}
                 name="name"
@@ -50,7 +50,7 @@ const RegistrationForm = () => {
           <div className={css.wrapper}>
             <label className={css.label}>
               Email:
-              <Field type="text" name="email" />
+              <Field className={css.input} type="text" name="email" />
               <ErrorMessage
                 className={css.error}
                 name="email"
@@ -61,7 +61,7 @@ const RegistrationForm = () => {
           <div className={css.wrapper}>
             <label className={css.label}>
               Password:
-              <Field type="text" name="password" />
+              <Field className={css.input} type="text" name="password" />
               <ErrorMessage
                 className={css.error}
                 name="password"

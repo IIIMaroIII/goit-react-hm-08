@@ -28,9 +28,10 @@ export const login = createAsyncThunk(
         return rejectWithValue(res.statusText);
       }
       handleToken.set(res.data.token);
-      // console.log('res.data', res.data);
-      // console.log('credentials', credentials);
-      toast.success(`Welcome back ${res.data.user.name}`);
+
+      toast.success(
+        `Welcome back ${res.data.user.name} 👋🏻 Nice to see you again 😉`,
+      );
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -40,7 +41,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
       const res = await axios.post('/users/logout');
       if (res.status > 300) {

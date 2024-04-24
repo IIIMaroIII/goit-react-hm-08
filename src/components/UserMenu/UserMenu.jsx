@@ -3,6 +3,8 @@ import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'src/redux/auth/selectors';
 import { logout } from 'src/redux/auth/operations';
+import toast from 'react-hot-toast';
+import { clearState } from 'src/redux/contacts/slice';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -10,7 +12,13 @@ const UserMenu = () => {
   const user = useSelector(selectUser);
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .unwrap()
+      .then(() => toast.success('You`ve been logged out 😊 See you soon! 😉'))
+      .catch(() =>
+        toast.error('Oops, something went wrong, please try again!🤨'),
+      );
+    dispatch(clearState());
   };
 
   return (

@@ -16,15 +16,16 @@ const SearchBox = () => {
 
   return (
     <div className={css.wrapper}>
-      <label htmlFor={filterId} className={css.label}>
+      {/* <label htmlFor={filterId} className={css.label}>
         Find contacts by name
-      </label>
+      </label> */}
       <input
-        id={filterId}
+        // id={filterId}
         className={css.input}
         type="text"
         value={filterName}
         onChange={onFilterInput}
+        placeholder="Find contacts by name"
       />
     </div>
   );

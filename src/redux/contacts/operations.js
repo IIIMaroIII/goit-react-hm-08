@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import toast from 'react-hot-toast';
-import CustomToast from 'src/utils/CustomToast';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 

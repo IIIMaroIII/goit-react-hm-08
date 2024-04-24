@@ -1,15 +1,18 @@
 import { useId } from 'react';
 import { nanoid } from 'nanoid/non-secure';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import css from './contactForm.module.css';
 import { addContact } from 'src/redux/contacts/operations';
 import { validationSchema } from 'src/utils/yup/validationSchema';
 import toast from 'react-hot-toast';
+import Button from '../Button/Button';
+import { selectLoadingContacts } from 'src/redux/contacts/selectors';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const isLoadingContacts = useSelector(selectLoadingContacts);
 
   const values = {
     id: '',
@@ -20,7 +23,12 @@ const ContactForm = () => {
   const handleSubmit = (values, actions) => {
     const uniqId = nanoid();
     const newValues = { ...values, id: uniqId };
-    dispatch(addContact(newValues));
+    dispatch(addContact(newValues))
+      .unwrap()
+      .then(() => toast.success('You`ve added a new contact 😃'))
+      .catch(() =>
+        toast.error('Oops, something went wrong, please try again!🤨'),
+      );
     actions.resetForm();
   };
 
@@ -48,10 +56,9 @@ const ContactForm = () => {
           <Field className={css.input} type="text" name="number" id={phoneId} />
           <ErrorMessage className={css.error} name="number" component="span" />
         </div>
-
-        <button className={css.btn} type="submit">
-          Add Contact
-        </button>
+        <Button type="submit" disabled={isLoadingContacts}>
+          Add contact
+        </Button>
       </Form>
     </Formik>
   );
