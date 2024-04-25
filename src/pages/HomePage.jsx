@@ -1,5 +1,7 @@
+import About from 'src/components/About/About';
+
 const HomePage = () => {
-  return <div>Welcome 🎊 to Home Page 🤜🏻🤛🏻</div>;
+  return <About />;
 };
 
 export default HomePage;
