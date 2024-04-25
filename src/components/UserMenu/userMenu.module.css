@@ -4,10 +4,19 @@
   gap: 16px;
 }
 .userWrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
 }
 .userText {
 }
 .userImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
 }
 .login {
   display: block;

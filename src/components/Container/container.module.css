@@ -1,4 +1,7 @@
 .container {
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow: hidden;
   min-height: 920px;
   padding: 24px;
 }
