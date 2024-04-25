@@ -16,6 +16,7 @@ import PrivateRoute from './PrivateRoute';
 import RestrictedRoute from './RestrictedRoute';
 import { selectRefreshing } from './redux/auth/selectors';
 import toast from 'react-hot-toast';
+import Refreshing from './components/Refreshing/Refreshing';
 
 function App() {
   const isUserRefreshing = useSelector(selectRefreshing);
@@ -25,7 +26,7 @@ function App() {
   }, [dispatch]);
 
   return isUserRefreshing ? (
-    <b>Refreshing...</b>
+    <Refreshing />
   ) : (
     <>
       <Layout>

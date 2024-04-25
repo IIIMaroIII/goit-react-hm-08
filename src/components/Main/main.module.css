@@ -1,17 +1,16 @@
 .main {
-  max-width: 1400px;
-  height: 100vw;
-  padding: 24px;
+  width: 100%;
+  height: 100%;
 }
 
 .locked {
-  background-image: url('https://media.istockphoto.com/id/1452108827/photo/the-gesture-interface-technology-with-the-security-key-lock-icon.jpg?s=1024x1024&w=is&k=20&c=iBKfvqQpuf_QIeyPvPYWfs17QWnzDxQf5Wg5d9n2xSo=');
+  background-image: url('./img/locked.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 .unlocked {
-  background-image: url('https://images.unsplash.com/photo-1531315630201-bb15abeb1653?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-image: url('./img/unlocked.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

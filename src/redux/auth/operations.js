@@ -41,7 +41,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk(
   'auth/logout',
-  async (_, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const res = await axios.post('/users/logout');
       if (res.status > 300) {
@@ -58,16 +58,15 @@ export const refreshCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, { getState, rejectWithValue }) => {
     const currentToken = getState().auth.token;
-    if (!currentToken) {
-      return rejectWithValue();
-    }
+    // if (!currentToken) {
+    //   return rejectWithValue();
+    // }
     handleToken.set(currentToken);
     try {
       const res = await axios.get('/users/current');
       if (res.status > 300) {
         return rejectWithValue(res.statusText);
       }
-      console.log(res);
       return res.data;
     } catch (error) {
       return rejectWithValue(error.message);

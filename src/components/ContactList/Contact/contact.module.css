@@ -1,21 +1,20 @@
 .contact {
   border: 1px solid var(--dark-grey);
+  height: 120px;
   padding: 16px;
-  width: 100%;
   border-radius: 4px;
   display: flex;
   align-items: center;
-  gap: 48px;
   justify-content: space-between;
-  /* flex-basis: calc((100% - 3 * 48px) / 4); */
+  flex-basis: calc((100% - 2 * 8px) / 3);
   box-shadow: var(--shadow);
   background-color: var(--semi-transparent);
 }
-/* .wrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-} */
+  gap: 16px;
+}
 .name {
 }
 .phone {

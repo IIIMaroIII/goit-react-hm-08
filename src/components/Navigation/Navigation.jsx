@@ -1,16 +1,13 @@
 import React from 'react';
 import css from './navigation.module.css';
 import { NavLink } from 'react-router-dom';
+import CustomNavLink from '../reusable/CustomNavLink/CustomNavLink';
 
 const Navigation = () => {
   return (
     <nav className={css.wrapper}>
-      <NavLink className={css.link} to="/">
-        Home
-      </NavLink>
-      <NavLink className={css.link} to="/contacts">
-        Contacts
-      </NavLink>
+      <CustomNavLink to="/">Home</CustomNavLink>
+      <CustomNavLink to="/contacts">Contacts</CustomNavLink>
     </nav>
   );
 };

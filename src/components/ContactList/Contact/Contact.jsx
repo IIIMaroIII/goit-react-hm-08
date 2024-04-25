@@ -33,16 +33,13 @@ const Contact = ({ data }) => {
             {number}
           </p>
         </div>
-        <Button onClick={() => onDeleteBtn(id)} disabled={isLoadingContacts}>
+        <Button
+          addClass={css.btn}
+          onClick={() => onDeleteBtn(id)}
+          disabled={isLoadingContacts}
+        >
           Delete contact
         </Button>
-        {/* <button
-          onClick={() => onDeleteBtn(id)}
-          className={css.btn}
-          type="button"
-        >
-          Delete
-        </button> */}
       </li>
     );
   });

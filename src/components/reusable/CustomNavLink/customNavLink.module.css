@@ -1,0 +1,40 @@
+.wrapperLink {
+  overflow: hidden;
+}
+.link {
+  position: relative;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  overflow: visible;
+}
+
+.link:hover {
+  color: var(--semi-transparent-red);
+}
+
+.isActive {
+  position: relative;
+  font-size: 18px;
+  color: var(--semi-transparent-red);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  border-radius: 2px;
+  width: 100%;
+  transform: translateX(100%);
+  transition: all 2s ease-in-out;
+
+  height: 2px;
+  background-color: var(--semi-transparent-red);
+}
+/* .isActive:hover::after {
+  transform: translateX(100%);
+} */
+.link:hover.link::after {
+  transform: translateX(0);
+}
