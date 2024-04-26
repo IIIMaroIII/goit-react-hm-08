@@ -3,11 +3,11 @@
   flex-direction: column;
   gap: 16px;
 
-  width: calc((100% - 2 * 8px) / 3);
   padding: 16px 8px;
   margin: 0 auto 16px;
   border: 1px solid var(--dark-grey);
   border-radius: 4px;
+  width: 100%;
 
   box-shadow: var(--shadow);
   background-color: var(--semi-transparent);
@@ -31,4 +31,10 @@
 }
 .btn {
   margin: 0 auto;
+}
+
+@media screen and (min-width: 480px) {
+  .form {
+    width: calc((100% - 2 * 8px) / 3);
+  }
 }

@@ -33,37 +33,39 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       {({ isValid, isSubmitting }) => (
-        <Form className={css.form}>
-          <div className={css.wrapper}>
-            <label className={css.label}>
-              Email:
-              <Field className={css.input} type="text" name="email" />
-              <ErrorMessage
-                className={css.error}
-                name="email"
-                component="span"
-              />
-            </label>
-          </div>
-          <div className={css.wrapper}>
-            <label className={css.label}>
-              Password:
-              <Field className={css.input} type="text" name="password" />
-              <ErrorMessage
-                className={css.error}
-                name="password"
-                component="span"
-              />
-            </label>
-          </div>
-          <Button
-            addClass={css.button}
-            type="submit"
-            disabled={!isValid || isSubmitting}
-          >
-            Log in
-          </Button>
-        </Form>
+        <div className={css.mainWrapper}>
+          <Form className={css.form}>
+            <div className={css.wrapper}>
+              <label className={css.label}>
+                Email:
+                <Field className={css.input} type="text" name="email" />
+                <ErrorMessage
+                  className={css.error}
+                  name="email"
+                  component="span"
+                />
+              </label>
+            </div>
+            <div className={css.wrapper}>
+              <label className={css.label}>
+                Password:
+                <Field className={css.input} type="password" name="password" />
+                <ErrorMessage
+                  className={css.error}
+                  name="password"
+                  component="span"
+                />
+              </label>
+            </div>
+            <Button
+              addClass={css.button}
+              type="submit"
+              disabled={!isValid || isSubmitting}
+            >
+              Log in
+            </Button>
+          </Form>
+        </div>
       )}
     </Formik>
   );

@@ -8,6 +8,7 @@
   min-height: 150px;
   /* top: 0;
   left: 0; */
+  border-radius: 8px;
   transform: translate(0, 0);
   transition: all var(--transition-delay) ease-in-out;
   padding: 24px;

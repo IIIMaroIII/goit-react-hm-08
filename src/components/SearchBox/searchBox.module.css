@@ -1,5 +1,5 @@
 .wrapper {
-  width: calc((100% - 2 * 8px) / 3);
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 16px;
@@ -12,4 +12,10 @@
   width: 100%;
   box-shadow: var(--shadow);
   background-color: var(--semi-transparent);
+}
+
+@media screen and (min-width: 480px) {
+  .wrapper {
+    width: calc((100% - 2 * 8px) / 3);
+  }
 }
