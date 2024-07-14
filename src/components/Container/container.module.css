@@ -1,6 +1,17 @@
 .container {
-  max-width: 1440px;
+  /* max-width: 1440px;
   margin: 0 auto;
   overflow: hidden;
-  padding: 24px;
+  padding: 24px; */
+}
+
+.desktop {
+}
+
+.tablet {
+}
+.mobile {
+}
+
+.desktop.mainWrapper {
 }
